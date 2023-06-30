@@ -123,11 +123,14 @@ internal static class Program
             return -1;
         }
 
-        File.WriteAllLines(settingsPath, new string[]
+        if (standaloneCli)
         {
-            gamePath,
-            output
-        });
+            File.WriteAllLines(settingsPath, new string[]
+            {
+                gamePath,
+                output
+            });
+        }
 
         Log($"Game Directory: {GameInfo.GameDirectory}");
         Log($"Game Data Directory: {GameInfo.GameDataDirectory}");
